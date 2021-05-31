@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rlegendr <rlegendr@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: matheme <matheme@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 15:18:39 by mjalenqu          #+#    #+#             */
-/*   Updated: 2020/12/04 17:26:15 by rlegendr         ###   ########lyon.fr   */
+/*   Updated: 2021/05/17 16:58:15 by matheme          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ char				*ft_strfdup(char *str);
 char				*ft_strndup(char *str, int len);
 int					ft_strequ(const char *s1, const char *s2);
 char				*ft_strjoin(const char *s1, const char *s2);
+char				*ft_strnjoin(char const *s1, char const *s2, int s1_len, int s2_len);
 void				ft_strjoin_free(char **s1, const char *s2);
 void				ft_strjoin_insert(char **s1, char *s2, int i);
 int					ft_strlen(const char *str);

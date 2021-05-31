@@ -16,7 +16,7 @@
 
 /*
 **  1024 512 256 128  64  32  16   8   4   2   1
-**    -   -   -   -    -   -   l   m   i   v   d
+**    -   -   -   -    -   -   -   s   r   q   p
 **    0   0   0   0    0   0   0   0   0   0   0
 **
 ** Lors d'ajout d'option penser a rajouter l'option dans la liste des options
@@ -41,10 +41,9 @@ static int	ft_plugout_option(char c, int option)
 static int	ft_listing_option(char c, int option)
 {
 	c == 'p' ? option = option | 1 : 0;
-	c == 'v' ? option = option | 2 : 0;
-	c == 'i' ? option = option | 4 : 0;
-	c == 'm' ? option = option | 8 : 0;
-	c == 'l' ? option = option | 16 : 0;
+	c == 'q' ? option = option | 2 : 0;
+	c == 'r' ? option = option | 4 : 0;
+	c == 's' ? option = option | 8 : 0;
 	option = ft_plugout_option(c, option);
 	return (option);
 }
@@ -108,7 +107,7 @@ char		**get_option(int ac, char **av, int *option)
 
 /*
 **  1024 512 256 128  64  32  16   8   4   2   1
-**    -   -   -   -    -   -   l   m   i   v   d
+**    -   -   -   -    -   -   -   s   r   q   p
 **    0   0   0   0    0   0   0   0   0   0   0
 **
 ** Lors d'ajout d'option penser a rajouter l'option dans la liste des options

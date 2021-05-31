@@ -6,7 +6,7 @@
 /*   By: matheme <matheme@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 12:39:15 by matheme           #+#    #+#             */
-/*   Updated: 2021/01/07 16:54:18 by matheme          ###   ########lyon.fr   */
+/*   Updated: 2021/05/17 17:25:58 by matheme          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,8 @@ char **get_algo(int *ac, char **av, char **algo)
 		usage();
 		exit(1);
 	}
-	
 	*ac -= 1;
-
 	algos = ft_strsplit(LIST_ALGO, ' ');
-
 	while (*algos != NULL)
 	{
 		if (!ft_strncmp_case_unsensitive(av[1], *algos, MAX_ALGO_NAME_SIZE))
@@ -35,12 +32,10 @@ char **get_algo(int *ac, char **av, char **algo)
 		}
 		algos = &algos[1];
 	}
-
 	if (*algo == NULL)
 	{
 		usage_algo(av[1]);
 		exit(1);
 	}
-
 	return (&av[1]);
 }

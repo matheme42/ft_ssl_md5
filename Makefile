@@ -6,7 +6,7 @@
 #    By: matheme <matheme@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/24 13:54:31 by matheme           #+#    #+#              #
-#    Updated: 2021/01/07 12:49:31 by matheme          ###   ########lyon.fr    #
+#    Updated: 2021/05/13 15:53:33 by matheme          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ INC_PATH		= includes
 HEADER			= $(INC_PATH)/ft_ssl.h
 
 # sources
-NAME_SRC		=	main.c option.c error.c algo.c
+NAME_SRC		=	main.c option.c error.c algo.c md5.c
 
 # objects
 NAME_OBJ		= $(addprefix $(OBJ_PATH)/,$(NAME_SRC:.c=.o))

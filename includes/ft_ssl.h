@@ -6,7 +6,7 @@
 /*   By: matheme <matheme@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 16:04:14 by matheme           #+#    #+#             */
-/*   Updated: 2021/01/07 14:35:45 by matheme          ###   ########lyon.fr   */
+/*   Updated: 2021/05/13 17:26:01 by matheme          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ char	**get_option(int ac, char **av, int *option);
 void	usage_option(const char option);
 void	usage_algo(char *algo);
 void	usage();
+
+void    md5(char *file, unsigned long size, char *name);
 
 #endif
