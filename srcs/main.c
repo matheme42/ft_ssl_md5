@@ -38,9 +38,7 @@ char	*get_file_from_fd(const int fd, size_t *size)
 void algo_selector(char *algo, char *file, unsigned long size, char *name)
 {
 	if (!ft_strncmp_case_unsensitive(algo, "md5", MAX_ALGO_NAME_SIZE))
-	{
 		md5(file, size, name);
-	}
 }
 
 int		main(int ac, char **av)
@@ -66,14 +64,11 @@ int		main(int ac, char **av)
 			av = &av[1];
 			continue ;
 		}
-		
-		
 		file = get_file_from_fd(fd, &size);
 		close(fd);
 		algo_selector(algo, file, size, *av);
 		av = &av[1];
 	}
-
 	if (file != NULL)
 		free(file);
 	return (0);

@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl.h                                           :+:      :+:    :+:   */
+/*   md5.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matheme <matheme@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 16:04:14 by matheme           #+#    #+#             */
-/*   Updated: 2021/07/01 17:59:19 by matheme          ###   ########lyon.fr   */
+/*   Updated: 2021/07/01 17:30:47 by matheme          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_H
-# define FT_SSL_H
+#ifndef MD5_H
+# define MD5_H
 
-#include "ft_int.h"
-#include "ft_str.h"
-#include "ft_printf.h"
-#include "ft_printf_err.h"
-#include "ft_mem.h"
-#include "md5.h"
+// leftrotate function definition
+#define LEFTROTATE(x, c) (((x) << (c)) | ((x) >> (32 - (c))))
+
+typedef struct  g_h {
+    int h0;
+    int h1;
+    int h2;
+    int h3;
+}               t_h;
 
 
-#define LIST_OPTION "p"
-#define LIST_ALGO "md5 "
-
-#define MAX_ALGO_NAME_SIZE 10
-
-char	**get_algo(int *ac, char **av, char **algo);
-char	**get_option(int ac, char **av, int *option);
-
-void	usage_option(const char option);
-void	usage_algo(char *algo);
-void	usage();
-
-void    md5(char *file, unsigned long size, char *name);
 
 #endif

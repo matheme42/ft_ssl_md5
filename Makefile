@@ -6,7 +6,7 @@
 #    By: matheme <matheme@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/24 13:54:31 by matheme           #+#    #+#              #
-#    Updated: 2021/05/13 15:53:33 by matheme          ###   ########lyon.fr    #
+#    Updated: 2021/07/01 17:59:24 by matheme          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,6 @@ OBJ_PATH		= obj
 #includes
 INC_PATH		= includes
 HEADER			= $(INC_PATH)/ft_ssl.h
-
 # sources
 NAME_SRC		=	main.c option.c error.c algo.c md5.c
 
