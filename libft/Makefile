@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: matheme <matheme@student.42lyon.fr>        +#+  +:+       +#+         #
+#    By: matheme <matheme@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/25 12:55:34 by mjalenqu          #+#    #+#              #
-#    Updated: 2021/05/17 16:57:56 by matheme          ###   ########lyon.fr    #
+#    Updated: 2022/03/15 19:56:09 by matheme          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,8 @@ USRC_NAME = ft_terminal_h.c ft_terminal_w.c ft_file_exists.c ft_create_file.c\
 IINC_NAME = ft_int.h
 ISRC_NAME = ft_atoi.c ft_int_len_base.c ft_isdigit.c ft_isxdigit.c ft_putnbr.c\
 			ft_putnbr_base.c ft_voidrev.c ft_voidswap.c ft_itoa_base_uns.c check_num_length.c\
-			ft_swap_uint32t.c ft_swap_uint64t.c ft_swap_uint8t.c ft_swap_uint16t.c ft_swap_byte.c
+			ft_swap_uint32t.c ft_swap_uint64t.c ft_swap_uint8t.c ft_swap_uint16t.c ft_swap_byte.c\
+			ft_itoa_base_champ.c
 
 MINC_NAME = ft_mem.h
 MSRC_NAME = ft_memset.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c\

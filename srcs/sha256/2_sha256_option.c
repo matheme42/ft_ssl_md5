@@ -12,11 +12,11 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "ft_ssl.h"
+#include "sha256.h"
 
 /*
 **  1024 512 256 128  64  32  16   8   4   2   1
-**    -   -   -   -    -   -   -   s   r   q   p
+**    -   -   -   -    -   -   h   s   r   q   p
 **    0   0   0   0    0   0   0   0   0   0   0
 **
 ** Lors d'ajout d'option penser a rajouter l'option dans la liste des options
@@ -35,7 +35,7 @@ static int	ft_plugout_option(char c, int option)
 
 /*
 ** liste des options
-** pour rajouter une option il suffit de recopier le patern suivant
+** pour rajouter une option il suffit de recopier le pattern suivant
 */
 
 static int	ft_listing_option(char c, int option)
@@ -44,8 +44,25 @@ static int	ft_listing_option(char c, int option)
 	c == 'q' ? option = option | 2 : 0;
 	c == 'r' ? option = option | 4 : 0;
 	c == 's' ? option = option | 8 : 0;
+	c == 'h' ? option = option | 16 : 0;
 	option = ft_plugout_option(c, option);
 	return (option);
+}
+
+/*
+**
+**
+*/
+static char **complexe_option(char c, char *d, char **av, t_option *complexe)
+{
+	if (c == 's') {
+		complexe->s = av[1];
+		if (*d != '\0' || !av[1]) {
+			usage_complexe_option(c, "must be follow by a string", "./ft_ssl md5 -s \"my special string\"");
+		}
+		return (&av[1]);
+	}
+	return (NULL);
 }
 
 /*
@@ -53,41 +70,29 @@ static int	ft_listing_option(char c, int option)
 ** aussi bien sur le meme arg que sur plusieur arg
 */
 
-static int	ft_option(int ac, char **av)
+static char	**ft_option(char **av, int *option, t_option *complexe)
 {
-	int option;
-	int	i;
+	int		i;
+	char	**rcv;
 
-	option = 0;
-	i = 1;
-	if ((*av)[0] != '-' || !(*av)[1])
-		return (option);
-	while ((*av)[i])
+	while (*av)
 	{
-		option = ft_listing_option((*av)[i], option);
-		if (ft_strchr(LIST_OPTION, (*av)[i]) == NULL)
+		i = 0;
+		if ((*av)[0] != '-' || !(*av)[1])
+			return (av);
+		while ((*av)[++i])
 		{
-			usage_option((*av)[i]);
-			exit(1);
+			if (ft_strchr(LIST_OPTION, (*av)[i]) == NULL)
+				usage_option((*av)[i]);
+			*option = ft_listing_option((*av)[i], *option);
+			if ((rcv = complexe_option((*av)[i], &(*av)[i + 1], av, complexe)))
+			{
+				av = rcv;
+				break ;
+			}
 		}
-		i++;
+		av = &av[1];
 	}
-	if (ac > 1)
-		return (option | ft_option(ac - 1, &av[1]));
-	return (option);
-}
-
-/*
-** permet de ce diriger apres les options
-** la fonction prend en compte le cas ou il n'y a que le tiret
-** et aucune option
-** dans ce cas la fonction ne deplace pas le pointeur
-*/
-
-static char	**ft_go_after_option(char **av)
-{
-	if (*av && **av == '-' && (*av)[1])
-		return (ft_go_after_option(&av[1]));
 	return (av);
 }
 
@@ -98,16 +103,19 @@ static char	**ft_go_after_option(char **av)
 ** et elle retourne l'argument qui suit les options
 */
 
-char		**get_option(int ac, char **av, int *option)
+char **sha256_get_option(char **av, int *option, t_option *complexe)
 {
-	if (ac != 0)
-		*option = ft_option(ac, av);
-	return (ft_go_after_option(av));
+
+    *option = 0;
+    ft_bzero(complexe, sizeof(complexe));
+	if (!(av) || !(*av))
+		return (av);
+	return (ft_option(av, option, complexe));
 }
 
 /*
 **  1024 512 256 128  64  32  16   8   4   2   1
-**    -   -   -   -    -   -   -   s   r   q   p
+**    -   -   -   -    -   -   h   s   r   q   p
 **    0   0   0   0    0   0   0   0   0   0   0
 **
 ** Lors d'ajout d'option penser a rajouter l'option dans la liste des options

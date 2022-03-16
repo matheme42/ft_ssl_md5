@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_int.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rlegendr <rlegendr@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: matheme <matheme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 15:18:39 by mjalenqu          #+#    #+#             */
-/*   Updated: 2020/12/04 10:00:27 by rlegendr         ###   ########lyon.fr   */
+/*   Updated: 2022/03/15 20:54:40 by matheme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void		ft_putnbr_base(int n, int base);
 void		*ft_voidrev(void *s);
 void		ft_voidswap(void *s, void *d);
 char		*ft_itoa_base_uns(unsigned long long nb, int base);
+char	    *ft_utoa_base_champ(unsigned long long nb, int bx, int champs);
 size_t		check_num_length(long long nb);
 uint8_t		swap_uint8t(uint8_t nb);
 uint16_t	swap_uint16t(uint16_t nb);

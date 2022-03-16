@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   md5.h                                              :+:      :+:    :+:   */
+/*   whirlpool.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matheme <matheme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/16 16:04:14 by matheme           #+#    #+#             */
-/*   Updated: 2022/03/15 21:08:13 by matheme          ###   ########.fr       */
+/*   Created: 2022/03/11 15:56:43 by matheme           #+#    #+#             */
+/*   Updated: 2022/03/11 17:43:28 by matheme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MD5_H
-# define MD5_H
+#ifndef whirlpool_H
+# define whirlpool_H
 
 # include "ft_ssl.h"
 
@@ -22,23 +22,13 @@
 #define S (option & 8)
 #define H (option & 16)
 
-// leftrotate function definition
-#define LEFTROTATE(x, c) (((x) << (c)) | ((x) >> (32 - (c))))
-
-typedef struct  g_h {
-    int h0;
-    int h1;
-    int h2;
-    int h3;
-}               t_h;
-
 typedef struct g_option {
     char *s;
 } t_option;
 
-char        **md5_get_option(char **argv, int *option, t_option *complexe);
-char        *md5_algo(int option, int file_len, char *file);
-void        md5_output(char *file_name, char *hash, int option);
-void        md5_usage();
+char        **whirlpool_get_option(char **argv, int *option, t_option *complexe);
+char        *whirlpool_algo(int option, int file_len, char *file);
+void        whirlpool_output(char *file_name, char *hash, int option);
+void        whirlpool_usage();
 
 #endif

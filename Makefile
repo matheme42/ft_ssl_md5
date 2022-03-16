@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: matheme <matheme@student.42lyon.fr>        +#+  +:+       +#+         #
+#    By: matheme <matheme@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/24 13:54:31 by matheme           #+#    #+#              #
-#    Updated: 2021/07/01 17:59:24 by matheme          ###   ########lyon.fr    #
+#    Updated: 2022/03/15 22:05:34 by matheme          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,12 @@ OBJ_PATH		= obj
 
 #includes
 INC_PATH		= includes
-HEADER			= $(INC_PATH)/ft_ssl.h
+
 # sources
-NAME_SRC		=	main.c option.c error.c algo.c md5.c
+NAME_SRC		=	main.c error.c get_file.c \
+					1_md5.c 2_md5_option.c 3_md5_algo.c 4_md5_output.c 5_md5_usage.c\
+					1_sha256.c 2_sha256_option.c 3_sha256_algo.c 4_sha256_output.c 5_sha256_usage.c\
+					1_whirlpool.c 2_whirlpool_option.c 3_whirlpool_algo.c 4_whirlpool_output.c 5_whirlpool_usage.c\
 
 # objects
 NAME_OBJ		= $(addprefix $(OBJ_PATH)/,$(NAME_SRC:.c=.o))
@@ -48,19 +51,40 @@ LIBFT			= libft
 LIBFT_INC		= libft/includes
 LIBFT.A			= $(LIBFT)/libft.a
 
-all : lib $(NAME)
+all : $(NAME)
 
 $(NAME) : $(NAME_OBJ) $(LIBFT.A)
 	@$(CC) -I $(LIBFT_INC) -L $(LIBFT) $^ -o $@
 	@echo "	\033[2K\r$(DARK_BLUE)ft_ssl:		$(GREEN)loaded\033[0m"
 
 
-$(OBJ_PATH)/%.o : $(SRC_PATH)/%.c $(HEADER)
+$(OBJ_PATH)/%.o : $(SRC_PATH)/%.c $(INC_PATH)/ft_ssl.h
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	@$(CC) -I $(LIBFT_INC) -I $(INC_PATH) -c $< -o $@
+	@$(CC) -I $(LIBFT_INC) -I $(INC_PATH)/ -c $< -o $@
+	@printf "\033[2K\r${G} >>Compiling ${N}$<\033[36m \033[0m"
+
+# compilation du sous dossier md5
+$(OBJ_PATH)/%.o : $(SRC_PATH)/md5/%.c $(INC_PATH)/md5.h
+	@mkdir $(OBJ_PATH) 2> /dev/null || true
+	@$(CC) -I $(LIBFT_INC) -I $(INC_PATH)/ -c $< -o $@
+	@printf "\033[2K\r${G} >>Compiling ${N}$<\033[36m \033[0m"
+
+# compilation du sous dossier sha256
+$(OBJ_PATH)/%.o : $(SRC_PATH)/sha256/%.c $(INC_PATH)/sha256.h
+	@mkdir $(OBJ_PATH) 2> /dev/null || true
+	@$(CC) -I $(LIBFT_INC) -I $(INC_PATH)/ -c $< -o $@
+	@printf "\033[2K\r${G} >>Compiling ${N}$<\033[36m \033[0m"
+
+# compilation du sous dossier whirlpool
+$(OBJ_PATH)/%.o : $(SRC_PATH)/whirlpool/%.c $(INC_PATH)/whirlpool.h
+	@mkdir $(OBJ_PATH) 2> /dev/null || true
+	@$(CC) -I $(LIBFT_INC) -I $(INC_PATH)/ -c $< -o $@
 	@printf "\033[2K\r${G} >>Compiling ${N}$<\033[36m \033[0m"
 
 lib:
+	@make -C $(LIBFT)
+
+$(LIBFT.A):
 	@make -C $(LIBFT)
 
 clean:
@@ -70,8 +94,8 @@ clean:
 	@echo "	\033[2K\r$(DARK_BLUE)objects:	$(LIGHT_PINK)removing\033[0m"
 
 fclean: clean
-	@make -C $(LIBFT) fclean
 	@rm -f $(NAME)
+	@make -C $(LIBFT) fclean
 	@echo "	\033[2K\r$(DARK_BLUE)ft_ssl:		$(PINK)removing\033[0m"
 	
 

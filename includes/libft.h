@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matheme <matheme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/25 12:30:24 by rlegendr          #+#    #+#             */
-/*   Updated: 2022/03/15 20:44:44 by matheme          ###   ########.fr       */
+/*   Created: 2020/12/16 16:04:14 by matheme           #+#    #+#             */
+/*   Updated: 2022/03/15 17:19:22 by matheme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef LIBFT_H
+# define LIBFT_H
 
+#include "ft_int.h"
 #include "ft_str.h"
+#include "ft_printf.h"
+#include "ft_printf_err.h"
+#include "ft_mem.h"
 
-char		*ft_strndup(char *s1, int n)
-{
-	int		i;
-	char	*s2;
-
-	if (!(s2 = ft_strnew(n)))
-		return (NULL);
-	i = -1;
-	while (++i < n)
-		s2[i] = s1[i];
-	return (s2);
-}
+#endif

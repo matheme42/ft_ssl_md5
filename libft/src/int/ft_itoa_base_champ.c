@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_itoa_base_champ.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matheme <matheme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/25 12:30:24 by rlegendr          #+#    #+#             */
-/*   Updated: 2022/03/15 20:44:44 by matheme          ###   ########.fr       */
+/*   Created: 2022/03/15 19:55:28 by matheme           #+#    #+#             */
+/*   Updated: 2022/03/15 20:57:10 by matheme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_int.h"
 
-#include "ft_str.h"
-
-char		*ft_strndup(char *s1, int n)
+char	*ft_utoa_base_champ(unsigned long long nb, int bx, int champ)
 {
-	int		i;
-	char	*s2;
+	static char base[17] = "0123456789abcdef\0";
+	char		*str;
 
-	if (!(s2 = ft_strnew(n)))
-		return (NULL);
-	i = -1;
-	while (++i < n)
-		s2[i] = s1[i];
-	return (s2);
+	if ((nb / bx > 0 && champ > 1) || champ > 1) {
+		str = ft_utoa_base_champ(nb / bx, bx, champ - 1);
+		ft_strjoin_free(&str, ft_strndup(&base[nb % bx], 1));
+		return (str);
+	}
+	return (ft_strndup(&base[nb % bx], 1));
 }

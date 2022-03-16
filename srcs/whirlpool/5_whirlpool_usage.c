@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   5_whirlpool_usage.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matheme <matheme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/25 12:30:24 by rlegendr          #+#    #+#             */
-/*   Updated: 2022/03/15 20:44:44 by matheme          ###   ########.fr       */
+/*   Created: 2022/03/11 14:27:02 by matheme           #+#    #+#             */
+/*   Updated: 2022/03/11 17:37:27 by matheme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "whirlpool.h"
 
-#include "ft_str.h"
-
-char		*ft_strndup(char *s1, int n)
+void        whirlpool_usage()
 {
-	int		i;
-	char	*s2;
-
-	if (!(s2 = ft_strnew(n)))
-		return (NULL);
-	i = -1;
-	while (++i < n)
-		s2[i] = s1[i];
-	return (s2);
+    ft_printf("./ft_ssl whirlpool [-pqr] [-s 'string']\n");
+    ft_printf(" -p  echo STDIN to STDOUT and append the checksum to STDOUT\n");
+    ft_printf(" -q  quiet mode\n");
+    ft_printf(" -r  reverse the format of the output\n");
+    ft_printf(" -s  print the sum of the given string\n");
+    exit(0);
 }

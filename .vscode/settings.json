@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "md5.h": "c",
+        "ft_int.h": "c",
+        "sha256.h": "c",
+        "libft.h": "c",
+        "ft_ssl.h": "c",
+        "whirlpool.h": "c",
+        "ft_str.h": "c"
+    }
+}
