@@ -6,7 +6,7 @@
 /*   By: matheme <matheme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 16:04:14 by matheme           #+#    #+#             */
-/*   Updated: 2022/03/15 22:01:16 by matheme          ###   ########.fr       */
+/*   Updated: 2022/03/21 10:22:04 by matheme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_SSL_H
 
 #include "libft.h"
+#include "ft_printf.h"
 
 // defini la liste de tous les algos disponibles
 #define LIST_ALGO "md5 sha256 whirlpool"
@@ -22,20 +23,16 @@
 
 /// Fonction d'erreur
 void	*usage_algo(char *algo);
-int     usage();
-void    usage_open(char *file);
-void    usage_read(char *file);
-void    usage_option(const char option);
-void    usage_complexe_option(const char option, char *explain, char *exemple);
+void    *usage_complexe_option(const char option, char *explain, char *exemple);
 
 // get_file
-char	*get_file_from_standard_entry(size_t *size, int force);
-char	*get_file_from_fd(const int fd, size_t *size);
 int     try_get_fd_from_string(char *s);
+char	*get_file_from_fd(const int fd, size_t *size);
+char	*get_file_from_standard_entry(size_t *size, int force);
 
-/// fonction algorithme
-void    md5(char **av);
-void    sha256(char **av);
-void    whirlpool(char **av);
+/// algorithme
+int    md5(char **av);
+int    sha256(char **av);
+int    whirlpool(char **av);
 
 #endif

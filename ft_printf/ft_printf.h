@@ -1,23 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   5_sha256_usage.c                                   :+:      :+:    :+:   */
+/*   ft_printf_internal.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matheme <matheme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/11 14:27:02 by matheme           #+#    #+#             */
-/*   Updated: 2022/03/18 16:40:38 by matheme          ###   ########.fr       */
+/*   Created: 2022/03/21 10:25:01 by matheme           #+#    #+#             */
+/*   Updated: 2022/03/21 10:25:24 by matheme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sha256.h"
-
-int sha256_usage()
-{
-    ft_printf("./ft_ssl sha256 [-pqr] [-s 'string']\n");
-    ft_printf(" -p  echo STDIN to STDOUT and append the checksum to STDOUT\n");
-    ft_printf(" -q  quiet mode\n");
-    ft_printf(" -r  reverse the format of the output\n");
-    ft_printf(" -s  print the sum of the given string\n");
-    return (1);
-}
+int					ft_printf(const char *format, ...);

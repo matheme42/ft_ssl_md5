@@ -58,7 +58,7 @@ static char **complexe_option(char c, char *d, char **av, t_option *complexe)
 	if (c == 's') {
 		complexe->s = av[1];
 		if (*d != '\0' || !av[1]) {
-			usage_complexe_option(c, "must be follow by a string", "./ft_ssl md5 -s \"my special string\"");
+			return(usage_complexe_option(c, "must be follow by a string", "FT_SSL> sha256 -s \"my special string\""));
 		}
 		return (&av[1]);
 	}
@@ -83,7 +83,7 @@ static char	**ft_option(char **av, int *option, t_option *complexe)
 		while ((*av)[++i])
 		{
 			if (ft_strchr(LIST_OPTION, (*av)[i]) == NULL)
-				usage_option((*av)[i]);
+				return (NULL);
 			*option = ft_listing_option((*av)[i], *option);
 			if ((rcv = complexe_option((*av)[i], &(*av)[i + 1], av, complexe)))
 			{

@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   1_sha256.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: matheme <matheme@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/18 16:38:21 by matheme           #+#    #+#             */
+/*   Updated: 2022/03/21 09:51:09 by matheme          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "sha256.h"
 
-void sha256(char **av)
+int sha256(char **av)
 {
     int         option;
     t_option    complexe;
@@ -11,12 +23,11 @@ void sha256(char **av)
 
     av = sha256_get_option(av, &option, &complexe);
 
-    if (H)
-        sha256_usage();
+    if (H || !av)
+        return (sha256_usage());
 
     if ((str_file = get_file_from_standard_entry(&file_size, P || (!*av && !complexe.s))))
     {
-        str_file[file_size - 1] = '\0';
         hash = sha256_algo(option, file_size, str_file);
         sha256_output(!P ? "stdin" : str_file, hash, option);
         free(str_file);
@@ -42,4 +53,5 @@ void sha256(char **av)
         }
         av = &av[1];
     }
+    return (0);
 }

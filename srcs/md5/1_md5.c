@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   1_md5.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: matheme <matheme@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/18 16:29:16 by matheme           #+#    #+#             */
+/*   Updated: 2022/03/18 16:55:22 by matheme          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "md5.h"
 
-void md5(char **av)
+int md5(char **av)
 {
     int         option;
     t_option    complexe;
@@ -9,14 +21,15 @@ void md5(char **av)
     char        *str_file;
     char        *hash;
 
+
+
     av = md5_get_option(av, &option, &complexe);
 
-    if (H)
-        md5_usage();
+    if (H || !av)
+        return (md5_usage());
 
     if ((str_file = get_file_from_standard_entry(&file_size, P || (!*av && !complexe.s))))
     {
-        str_file[file_size - 1] = '\0';
         hash = md5_algo(option, file_size, str_file);
         md5_output(!P ? "stdin" : str_file, hash, option);
         free(str_file);
@@ -30,7 +43,7 @@ void md5(char **av)
         md5_output(complexe.s, hash, option);
         free(hash);
     }
-    
+
     while (*av)
     {
         if ((str_file = get_file_from_fd(try_get_fd_from_string(*av), &file_size)))
@@ -42,4 +55,5 @@ void md5(char **av)
         }
         av = &av[1];
     }
+    return (0);
 }

@@ -29,6 +29,6 @@ typedef struct g_option {
 char        **whirlpool_get_option(char **argv, int *option, t_option *complexe);
 char        *whirlpool_algo(int option, int file_len, char *file);
 void        whirlpool_output(char *file_name, char *hash, int option);
-void        whirlpool_usage();
+int         whirlpool_usage();
 
 #endif

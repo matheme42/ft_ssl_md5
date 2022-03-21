@@ -6,14 +6,14 @@
 /*   By: matheme <matheme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 18:27:49 by matheme           #+#    #+#             */
-/*   Updated: 2022/03/15 17:25:31 by matheme          ###   ########.fr       */
+/*   Updated: 2022/03/18 16:39:44 by matheme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "whirlpool.h"
 
-void whirlpool(char **av)
+int whirlpool(char **av)
 {
     int         option;
     t_option    complexe;
@@ -23,12 +23,11 @@ void whirlpool(char **av)
 
     av = whirlpool_get_option(av, &option, &complexe);
 
-    if (H)
-        whirlpool_usage();
+    if (H || !av)
+        return (whirlpool_usage());
 
     if ((str_file = get_file_from_standard_entry(&file_size, P || (!*av && !complexe.s))))
     {
-        str_file[file_size - 1] = '\0';
         hash = whirlpool_algo(option, file_size, str_file);
         whirlpool_output(!P ? "stdin" : str_file, hash, option);
         free(str_file);
@@ -54,4 +53,5 @@ void whirlpool(char **av)
         }
         av = &av[1];
     }
+    return (0);
 }

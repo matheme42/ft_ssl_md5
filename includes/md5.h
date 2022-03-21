@@ -6,7 +6,7 @@
 /*   By: matheme <matheme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 16:04:14 by matheme           #+#    #+#             */
-/*   Updated: 2022/03/15 21:08:13 by matheme          ###   ########.fr       */
+/*   Updated: 2022/03/21 09:50:38 by matheme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ typedef struct g_option {
 char        **md5_get_option(char **argv, int *option, t_option *complexe);
 char        *md5_algo(int option, int file_len, char *file);
 void        md5_output(char *file_name, char *hash, int option);
-void        md5_usage();
+int         md5_usage();
 
 #endif

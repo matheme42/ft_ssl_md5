@@ -6,6 +6,10 @@
         "libft.h": "c",
         "ft_ssl.h": "c",
         "whirlpool.h": "c",
-        "ft_str.h": "c"
+        "ft_str.h": "c",
+        "ft_printf.h": "c",
+        "unistd.h": "c",
+        "fcntl.h": "c",
+        "stdlib.h": "c"
     }
 }
